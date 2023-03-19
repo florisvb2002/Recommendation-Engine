@@ -24,7 +24,7 @@ print(producten[0])
 # Zet de data over
 
 conn = psycopg2.connect(
-    database = "HUwebshop5",
+    database = "HUwebshop4",
     host = 'localhost',
     port = '5432',
     password = 'Bommel2011',
@@ -57,8 +57,8 @@ for product in producten:
         stock_level = stock.get('stock')
     else:
         stock_level = 0
-    print(stock_level)
-    print(subcat1)
+
+    print(id)
 
 
 
@@ -66,10 +66,10 @@ for product in producten:
 
 
     # Hier geef ik variabelen die ik daaronder door middel van execute naar de database schrijf
-    # product_database = 'INSERT INTO product(id, brand, category, gender, sub_category, sub_sub_category, sub_sub_sub_category, repeat_purchases, price) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s)'
+    product_database = 'INSERT INTO product(id, brand, category, gender, sub_category, sub_sub_category, sub_sub_sub_category, repeat_purchases, price) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s)'
     # stock_database = 'INSERT INTO stock(stock_level) VALUES(%s)'
-    # cursor.execute(product_database, (id, merk, categorie, gender, subcat1, subcat2, subcat3, herhaalaankoop, verkoopprijs/100))
-    # cursor.execute(stock_database,(stock_level))
+    cursor.execute(product_database, (id, merk, categorie, gender, subcat1, subcat2, subcat3, herhaalaankoop, verkoopprijs/100))
+    # cursor.execute(stock_database, (stock_level))
 
 
 
